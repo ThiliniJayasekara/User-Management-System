@@ -1,0 +1,229 @@
+﻿@model IEnumerable<Inventory_management.Models.user>
+
+
+@{
+    Layout = "~/Views/Shared/adminView/profile.cshtml";
+}
+
+
+<html>
+<head>
+
+    <style>
+        /*td {
+                background-color: #808080;
+            }*/
+
+        /*tr td:hover {
+                background-color: #c2c2c2;
+            }*/
+    </style>
+
+</head>
+
+<body>
+    <br />
+
+
+    <br />
+
+    <div class="col-4" style="float:right">
+        <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+    </div>
+
+    <a href="@Url.Action("Create","Employee")" class="btn btn-success" style="text-decoration:none; color:white;">Create New </a>
+
+    <br />
+    <br />
+
+    <div style="overflow-x:auto; overflow-y:auto">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Occ</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Shedule</th>
+                <th>Dietory Plan</th>
+                <th>Payment</th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="Search">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.regId)
+                    </td>
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.fname)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.lname)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.password_)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.age)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.gender)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.ocp)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.weight_)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.height)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.shedule)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.d_plan)
+                    </td>
+
+                    <td class="col-3">
+                        @Html.DisplayFor(modelItem => item.pay_type)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("View", "viewUser", new { id = item.regId }, new { @class = "btn btn-success", @style = "color:white" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "deleteUser", new { id = item.regId }, new { @class = "btn btn-danger", @style = "color:white" })
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+    <script>
+            $(document).ready(function () {
+
+                function Contains(text_one, text_two) {
+                    if (text_one.indexOf(text_two) != -1)
+                        return true;
+                }
+
+
+                $("#Search").keyup(function () {
+                    var searchText = $("#Search").val().toLowerCase();
+                    $(".Search").each(function () {
+
+                        if (!Contains($(this).text().toLowerCase(), searchText)) {
+                            $(this).hide();
+                        }
+                        else {
+
+                            $(this).show();
+                        }
+                    });
+
+                });
+
+            });
+
+            $('.tablecontainer').on('click', 'a.popup', function (e) {
+                e.preventDefault();
+                OpenPopup($(this).attr('href'));
+            })
+
+            function OpenPopup(pageUrl) {
+
+                var $pageContent = $('<div />');
+                $pageContent.load(pageUrl);
+
+
+                $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                    .html($pageContent)
+                    .dialog({
+                        draggable: false,
+                        autoOpen: false,
+                        resizable: false,
+                        model: true,
+                        title: 'Remove User',
+                        height: 550,
+                        width: 600,
+                        close: function () {
+                            $dialog.dialog('destroy').remove();
+                        }
+                    });
+
+                $('.popupWindow').on('submit', '#popupForm', function (e) {
+                    var url = $('#popupForm')[0].action;
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: $('#popupForm').serialize(),
+                        success: function (data) {
+                            if (data.status) {
+                                $dialog.gialog('close');
+                                oTable.ajax.reload();
+                            }
+                        }
+                    })
+                    e.preventDefault();
+                })
+                $dialog.dialog('open');
+
+            }
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
