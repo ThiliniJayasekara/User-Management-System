@@ -183,6 +183,7 @@ iframe {
 .limiter {
   width: 100%;
   margin: 0 auto;
+  height:600px;
 
 }
 
@@ -229,7 +230,7 @@ iframe {
   background-size: cover;
   background-position: center;
 
-  padding: 70px 15px 74px 15px;
+  padding: 30px 15px 74px 15px;
 }
 
 .login100-form-title-1 {

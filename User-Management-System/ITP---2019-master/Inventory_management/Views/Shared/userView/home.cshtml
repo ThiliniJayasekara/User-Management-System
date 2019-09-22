@@ -69,8 +69,9 @@
                                         </li>
 
                                 </ul>
+                                @Html.ActionLink("LOGOUT", "LogOut", "Login", null, new { @class = "btn btn-outline-danger", @style = "text-decoration:none;color:white;" })
 
-                                <button class="btn btn-outline-danger">@Html.ActionLink("LOGOUT", "LogOut", new { @class = "btn btn-outline-danger", @style = "text-decoration:none;color:white;" })</button>
+                                @*<button class="btn btn-outline-danger">@Html.ActionLink("LOGOUT", "LogOut","Login",null, new { @class = "btn btn-outline-danger", @style = "text-decoration:none;color:white;" })</button>*@
 
                             </div>
                         </div>

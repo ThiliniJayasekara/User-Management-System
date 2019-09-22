@@ -29,13 +29,13 @@ namespace Login.Controllers
 
             using (inventorymgtEntities dbModel = new inventorymgtEntities())
             {
-                var pass = userModel.password_.ToString();
-                var usrname = userModel.username.ToString();
+                var pass = userModel.password_ != null ? userModel.password_.ToString() : "";
+                var usrname = userModel.username != null ? userModel.username.ToString(): "";
                 if (pass != null && usrname != null)
                 {
                     var userDetails = dbModel.users.Where(x => x.email == usrname && x.password_ == pass).FirstOrDefault();
 
-                    if (userDetails != null && userDetails.email.Equals("akaamzain@hotmail.com") && userDetails.password_.Equals("1202"))
+                    if (userDetails != null && userDetails.email != null && userDetails.password_ != null && userDetails.email.Equals("akaamzain@hotmail.com") && userDetails.password_.Equals("1202"))
                     {
                         Session["userID"] = userDetails.regId;
                         Session["user"] = userDetails.fname;
@@ -76,12 +76,12 @@ namespace Login.Controllers
 
         public ActionResult LogOut()
         {
-
-            int userId = (int)Session["userID"];
-            Session.Abandon();
+            if (Session["userID"] != null)
+            {
+                int userId = (int)Session["userID"];
+                Session.Abandon();
+            }
             return View("Login");
-
-
         }
 
 

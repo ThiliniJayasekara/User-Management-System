@@ -182,6 +182,7 @@ namespace Inventory_management.Controllers
             {
                 int rdays = 0, cdays=0;
                 int userId= (int)Session["userId"];
+                atd.user_ = userId;
 
                 using ( inventorymgtEntities dbModel = new inventorymgtEntities())
                 {
@@ -224,17 +225,26 @@ namespace Inventory_management.Controllers
                         atd.no_of_days = 1;
                         cdays = 1;
                     }
-                    
-                    dbModel.Entry(atd).State = EntityState.Modified;
-                    dbModel.SaveChanges();
 
-                    rdays = rdays - cdays;
+                    var atdDetails = dbModel.attendances.Where(x => x.user_ == userId).FirstOrDefault();
+
+                    if (DateTime.Now.Date.CompareTo(DateTime.Parse(atdDetails.date_)) > 0)
+                    {
+
+                        dbModel.Entry(atd).State = EntityState.Modified;
+                        dbModel.SaveChanges();
+                        rdays = rdays - cdays;
+
+                        Session["progress"] = (100 / 45) * cdays;
+                        Session["rDays"] = rdays;
+                    }
+       
+                    
                 }
 
-                Session["progress"] = (100/45)*cdays;
-                Session["rDays"] = rdays;
+                
 
-                return RedirectToAction("Attendance", "proifle", new {id = atd.user_ });
+                return RedirectToAction("Attendance", "proifle", new {id = userId });
                 //return View(atd);
             }
             catch(Exception e)

@@ -26,7 +26,6 @@ namespace Inventory_management.Controllers
             using (inventorymgtEntities dbModel = new inventorymgtEntities())
             {
 
-                var aaa = dbModel.users.ToList();
                 if (dbModel.users.Any(x => x.email == userModel.email)) {
 
                     ViewBag.DuplicateMsg = "Your Email is already exist.";
@@ -46,6 +45,21 @@ namespace Inventory_management.Controllers
                 dbModel.users.Add(userModel);
                 dbModel.SaveChanges();
 
+                attendance atnModel = new attendance();
+
+
+                var initialUser = dbModel.users.Where(x => x.email == userModel.email).FirstOrDefault();
+
+
+
+                atnModel.user_ = initialUser.regId;
+                atnModel.no_of_days = 0;
+                atnModel.status_ = "false";
+                atnModel.date_ = DateTime.Now.Date.ToString();
+                //atnModel.date_ = DateTime.Now.ToString("MM-dd-yyyy");
+
+                dbModel.attendances.Add(atnModel);
+                dbModel.SaveChanges();
             }
             
             ViewBag.SuccessMessage = "Registration Successful.";

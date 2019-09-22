@@ -1,98 +1,248 @@
 ﻿@model Inventory_management.Models.user
 
+
 @{
-    Layout = null;
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/userView/login.cshtml";
 }
 
 <style>
-    label{
-        font-weight:bold;
-     
+    label {
+        font-weight: bold;
     }
-    
-    .header{
-       background-color:#000;
-       color:#fff;
-       padding:10px;
-       text-align:center;
+
+    .header {
+        background-color: #000;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
     }
+
     .form {
-        background-color:#e4e4e4;
+        background-color: #e4e4e4;
     }
-
 </style>
-
 <div class="header">
     <h2>@Model.fname @Model.lname </h2>
 </div>
-
 <hr />
 
-@using (Html.BeginForm("viewUser", "Search", FormMethod.Post, new { id = Model.regId}))
-{
-    @Html.HiddenFor(a => a.regId)
-    @Html.HiddenFor(a => a.img_path)
 
-    
+<div class="signup-form" style="padding: 60px 0">
 
-    <div class="form-group">
-        <label>First Name</label>
-        <p>@Model.fname</p>
-    </div>
-    <div class="form-group">
-        <label>Last Name</label>
-        <p>@Model.lname</p>
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <p>@Model.email</p>
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <p>@Model.password_</p>
-    </div>
-    <div class="form-group">
-        <label>Age</label>
-        <p>@Model.age</p>
-    </div>
-    <div class="form-group">
-        <label>Gender</label>
-        <p>@Model.gender</p>
-    </div>
-    <div class="form-group">
-        <label>Occupation</label>
-        <p>@Model.ocp</p>
-    </div>
-    <div class="form-group">
-        <label>Weight</label>
-        <p>@Model.weight_</p>
-    </div>
-    <div class="form-group">
-        <label>Height</label>
-        <p>@Model.height</p>
-    </div>
-    <div class="form-group">
-        <label>Contact No</label>
-        <p>@Model.phone</p>
-    </div>
-    <div class="form-group">
-        <label>Address</label>
-        <p>@Model.address</p>
-    </div>
-    <div class="form-group">
-        <label>Shedule</label>
-        <p>@Model.shedule</p>
-    </div>
-    <div class="form-group">
-        <label>Dietary Plan</label>
-        <p>@Model.d_plan</p>
-    </div>
-    <div class="form-group">
-        <label>Payment</label>
-        <p>@Model.pay_type</p>
-    </div>
 
-    <div>
-        <input type="submit" class="btn btn-primary" value="Delete" />
+    @using (Html.BeginForm("viewUser", "Search", FormMethod.Post, new { id = Model.regId }))
+    {
+        @Html.HiddenFor(a => a.regId)
+        @Html.HiddenFor(a => a.img_path)
+
+
+
+
+
+
+
+        <div class="form-horizontal">
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fname, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.fname, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.fname, "", new { @class = "text -danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.lname, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.lname, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.lname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password_, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.password_, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.password_, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.gender, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    Male    @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "radio", disabled = "disabled" })
+                    Female  @Html.RadioButtonFor(model => model.gender, "Female", new { @class = "radio", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.age, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ocp, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.ocp, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.ocp, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.weight_, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.weight_, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.weight_, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.height, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.height, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.height, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.shedule, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.DropDownListFor(model => model.shedule, new List<SelectListItem> {
+                        new SelectListItem {Text="Weight loss - 30 Days", Value="D30" },
+                        new SelectListItem {Text="Cardio - 40 Days", Value="D40" },
+                        new SelectListItem {Text="Muscle gain - 45 Days", Value="D45" },
+                        new SelectListItem {Text="Calisthenics - 50 Days", Value="D50" }
+                    }, "Select Shedule", new { @class = "form-control", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.shedule, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.d_plan, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.DropDownListFor(model => model.d_plan, new List<SelectListItem> {
+                        new SelectListItem {Text="WeightLoss", Value="L1" },
+                        new SelectListItem {Text="Muscle Building", Value="L2" },
+                        new SelectListItem {Text="Athlete", Value="L3" },
+                        new SelectListItem {Text="Cardio / Calisthenics", Value="L4" }
+               }, "Select Dietary Plan", new { @class = "form-control", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.d_plan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.pay_type, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style="left:150px;">
+                    @Html.DropDownListFor(model => model.pay_type, new List<SelectListItem> {
+                        new SelectListItem {Text="1 Month", Value="1 Month" },
+                        new SelectListItem {Text="3 Months", Value="3 Months" },
+                        new SelectListItem {Text="1 Year", Value="1 Year" }
+               }, "Select Payment Method", new { @class = "form-control", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.pay_type, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+   
+
+
+
+                    @*<div class="form-group">
+                        <label>First Name</label>
+                        <p>@Model.fname</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <p>@Model.lname</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <p>@Model.email</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <p>@Model.password_</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <p>@Model.age</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <p>@Model.gender</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <p>@Model.ocp</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Weight</label>
+                        <p>@Model.weight_</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Height</label>
+                        <p>@Model.height</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact No</label>
+                        <p>@Model.phone</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <p>@Model.address</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Shedule</label>
+                        <p>@Model.shedule</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Dietary Plan</label>
+                        <p>@Model.d_plan</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment</label>
+                        <p>@Model.pay_type</p>
+                    </div>*@
+
+                    @*<div>
+                        <input type="submit" class="btn btn-primary" value="Delete" />
+                    </div>*@
+               
+
+            </div>
+    }
+
     </div>
-}

@@ -31,7 +31,7 @@
         <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
     </div>
 
-    <a href="@Url.Action("Create","Employee")" class="btn btn-success" style="text-decoration:none; color:white;">Create New </a>
+    <a href="@Url.Action("addOrEdit","User")" class="btn btn-success" style="text-decoration:none; color:white;">Create New </a>
 
     <br />
     <br />
@@ -121,6 +121,9 @@
 
                     <td>
                         @Html.ActionLink("View", "viewUser", new { id = item.regId }, new { @class = "btn btn-success", @style = "color:white" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "proifle", new { id = item.regId }, new { @class = "btn btn-primary", @style = "color:white" })
                     </td>
                     <td>
                         @Html.ActionLink("Delete", "deleteUser", new { id = item.regId }, new { @class = "btn btn-danger", @style = "color:white" })

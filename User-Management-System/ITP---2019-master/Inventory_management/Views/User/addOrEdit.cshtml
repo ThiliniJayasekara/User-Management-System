@@ -7,7 +7,7 @@
 }
 
 
-<div class="signup-form">
+<div class="signup-form" style="padding: 60px 0">
 
 
     @using (Html.BeginForm("addOrEdit", "user", FormMethod.Post))
@@ -24,41 +24,43 @@
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
+
             <div class="form-group">
-                @Html.LabelFor(model => model.fname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.fname, htmlAttributes: new { @style= "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.fname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.fname, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.fname, "", new { @class = "text -danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.lname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.lname, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.lname, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.lname, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.password_, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.password_, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.password_, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.password_, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.gender, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     Male    @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "radio" })
                     Female  @Html.RadioButtonFor(model => model.gender, "Female", new { @class = "radio" })
                     @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
@@ -66,56 +68,56 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.age, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.ocp, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.ocp, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.ocp, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ocp, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.weight_, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.weight_, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.weight_, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.weight_, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.height, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.height, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.height, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.height, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.phone, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.shedule, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.shedule, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.DropDownListFor(model => model.shedule, new List<SelectListItem> {
                         new SelectListItem {Text="Weight loss - 30 Days", Value="D30" },
                         new SelectListItem {Text="Cardio - 40 Days", Value="D40" },
@@ -128,8 +130,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.d_plan, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.d_plan, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.DropDownListFor(model => model.d_plan, new List<SelectListItem> {
                         new SelectListItem {Text="WeightLoss", Value="L1" },
                         new SelectListItem {Text="Muscle Building", Value="L2" },
@@ -142,8 +144,8 @@
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.pay_type, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.pay_type, htmlAttributes: new { @style = "left:140px; text-align:left;", @class = "control-label col-md-2" })
+                <div class="col-md-10" style = "left:150px;">
                     @Html.DropDownListFor(model => model.pay_type, new List<SelectListItem> {
                         new SelectListItem {Text="1 Month", Value="1 Month" },
                         new SelectListItem {Text="3 Months", Value="3 Months" },
@@ -155,13 +157,13 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-offset-2 col-md-10" style="left:110px">
                     <input type="submit" value="Register" class="btn btn-default" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-offset-2 col-md-10" style="left:190px">
                     <label class="control-label lbl">@Html.ActionLink("Sign in", "../Login/Login")</label>
                 </div>
             </div>
